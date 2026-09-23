@@ -18,4 +18,13 @@
   - [ ] Implement a min-heap of chores ordered by urgency
   - [ ] Implement a heap of unpaid bills ordered by due date
   - [ ] Support insert, extractMin, and peek operations
-- [ ] Hash Table
+### Hash Table
+  - [ ] Map memberID -> Member Object for O(1) lookup of family members and their assigned chores
+  - [ ] Map taskID -> Task object and expenseID -> Expense object for quick retrieval/updates
+  - [ ] Use a hash table to group expenses by categories
+### Graph
+  - [ ] Model chore dependencies as a graph (e.g., vacuum before declutter) and support topological sort to determine valid task order
+  - [ ] Implement traversal (BFS/DFS) to detect dependency cycles
+
+## NOTE
+AI was used to generate TODOs for ease of assignment and to have a framework
