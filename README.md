@@ -1,5 +1,5 @@
 # DataStrucProj
-
+A simple household management program
 ## TODOs:
 ### ARRAY
   - [ ] Store the names of the family members in an array
@@ -25,6 +25,9 @@
 ### Graph
   - [ ] Model chore dependencies as a graph (e.g., vacuum before declutter) and support topological sort to determine valid task order
   - [ ] Implement traversal (BFS/DFS) to detect dependency cycles
+### Integration
+  - [ ] Create a service class that implements all the data structure classes
+  - [x] Create a user interface
 
 ## NOTE
-AI was used to generate TODOs for ease of assignment and to have a framework
+AI was used to generate TODOs for ease of assignment, creation of a framework, and to speed up development
