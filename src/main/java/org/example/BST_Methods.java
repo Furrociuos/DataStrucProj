@@ -60,9 +60,10 @@ public class BST_Methods {
             if (root.right == null) return root.left;
 
             // Node with 2 children
-            Node successor = getSuccessor(root);
-            root.data = successor.data;
-            root.right = delete(root.right, successor.data);
+            Node inorderSuccessor = inorderSuccessor(root);
+            root.data = inorderSuccessor.data;
+            root.item = inorderSuccessor.item;
+            root.right = delete(root.right, inorderSuccessor.data);
         }
         return root;
     }
