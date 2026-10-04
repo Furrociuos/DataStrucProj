@@ -4,8 +4,8 @@ public class BST_Expenses {
     // Calling the node in BST_Methods.Node instead of creating a new Node class
     private BST_Methods.Node root;
 
-    public boolean searchExpense(int dueDate) { return BST_Methods.search(root, dueDate); }
-    public void insertExpense(int dueDate, String expense) { root = BST_Methods.insert(root, dueDate, expense); }
-    public void deleteExpense(int dueDate) { root = BST_Methods.delete(root, dueDate); }
+    public boolean searchExpense(int key) { return BST_Methods.search(root, key); }
+    public void insertExpense(int key, String expense) { root = BST_Methods.insert(root, key, expense); }
+    public void deleteExpense(int key) { root = BST_Methods.delete(root, key); }
     public void displayExpenses() { BST_Methods.inOrder(root); }
 }
