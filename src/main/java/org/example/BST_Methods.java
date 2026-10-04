@@ -1,21 +1,22 @@
-package com.mycompany.finals;
+package org.example;
 
-public class Finals {
-    // Binary Search Tree
-    static class Node {
-        int data;
-        Node left, right;
+public class BST_Methods {
+    public static class Node {
+        public int data;
+        public String item; // This is the expense or chore (e.g. Electricity Bill, Laundry)
+        public Node left, right;
         
-        Node(int data) {
+        Node(int data, String item) {
             this.data = data;
+            this.item = item;
             left = right = null;
         }
     }
     
-    //These sections of code is based from these sources: 
-    //Search: https://www.geeksforgeeks.org/dsa/binary-search-tree-set-1-search-and-insertion/
-    //Insert: https://www.geeksforgeeks.org/dsa/insertion-in-binary-search-tree/
-    //Delete: https://www.geeksforgeeks.org/dsa/deletion-in-binary-search-tree/
+    // These sections of code is based from these sources: 
+    // Search: https://www.geeksforgeeks.org/dsa/binary-search-tree-set-1-search-and-insertion/
+    // Insert: https://www.geeksforgeeks.org/dsa/insertion-in-binary-search-tree/
+    // Delete: https://www.geeksforgeeks.org/dsa/deletion-in-binary-search-tree/
     
     static boolean search(Node root, int key) {
         // Root is null; return false
@@ -26,22 +27,20 @@ public class Finals {
         return search(root.left, key);
     }
     
-    static Node insert(Node root, int key) {
+    static Node insert(Node root, int key, String item) {
         // Insert the new node at an empty position
-        if (root == null) { return new Node(key); }
+        if (root == null) { return new Node(key, item); }
         // If key is already present, do not insert it again
         if (key == root.data) { return root; }
         // Insert into the left subtree
-        if (key < root.data) { root.left = insert(root.left, key); }
+        if (key < root.data) { root.left = insert(root.left, key, item); }
         // Insert into the right subtree
-        else { root.right = insert(root.right, key); }
+        else { root.right = insert(root.right, key, item); }
         return root;
     }
     
-    // Get inorder successor (smallest in right subtree)
-    // Note: This method is used for deletion if the node has two children
-    // Note 2: This gets the next greater value than the target node
-    static Node getSuccessor(Node current) {
+    // This method, inorderSucessor, is only activated if the node has two children
+    public static Node inorderSuccessor(Node current) {
         current = current.right;
         while (current != null && current.left != null) {
             current = current.left;
@@ -71,7 +70,7 @@ public class Finals {
     static void inOrder(Node node) {
         if (node != null) {
             inOrder(node.left);
-            System.out.println(node.data);
+            System.out.println(node.item);
             inOrder(node.right);
         }
     }
