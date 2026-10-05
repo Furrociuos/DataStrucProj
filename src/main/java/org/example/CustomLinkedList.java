@@ -54,4 +54,13 @@ public class CustomLinkedList<T> {
 
         return false;
     }
+
+    public void traverse() {
+        Node<T> current = head;
+
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }
     }
