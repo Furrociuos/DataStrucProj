@@ -54,4 +54,52 @@ public class CustomLinkedList<T> {
 
         return false;
     }
+
+    public void traverse() {
+        Node<T> current = head;
+
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }
+
+    public boolean delete(T target) {
+        if (head == null) {
+            return false;
+        }
+
+        if ((head.data == null && target == null) ||
+                (head.data != null && head.data.equals(target))) {
+
+            head = head.next;
+            size--;
+
+            if (head == null) {
+                tail = null;
+            }
+
+            return true;
+        }
+
+        Node<T> current = head;
+
+        while (current.next != null) {
+            if ((current.next.data == null && target == null) ||
+                    (current.next.data != null && current.next.data.equals(target))) {
+
+                if (current.next == tail) {
+                    tail = current;
+                }
+
+                current.next = current.next.next;
+                size--;
+                return true;
+            }
+
+            current = current.next;
+        }
+
+        return false;
+    }
     }
