@@ -1,3 +1,5 @@
+package org.example;
+
 public class SimpleList<T> {
     private Object[] data = new Object[10];
     private int size;

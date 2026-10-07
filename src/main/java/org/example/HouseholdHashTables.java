@@ -1,3 +1,5 @@
+package org.example;
+
 public class HouseholdHashTables {
 
     private final HashTable<String, Member> members = new HashTable<>();

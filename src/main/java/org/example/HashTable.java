@@ -1,3 +1,5 @@
+package org.example;
+
 public class HashTable<K, V> {
 
     private static class Node<K, V> {

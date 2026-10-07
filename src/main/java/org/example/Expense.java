@@ -1,3 +1,5 @@
+package org.example;
+
 public class Expense {
     private final String expenseID;
     private final String category;

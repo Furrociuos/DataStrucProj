@@ -1,3 +1,5 @@
+package org.example;
+
 public class Member {
     private final String memberID;
     private final String name;
