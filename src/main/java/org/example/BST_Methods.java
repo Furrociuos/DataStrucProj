@@ -75,4 +75,13 @@ public class BST_Methods {
             inOrder(node.right);
         }
     }
+
+    static void rangeSearch(Node node, int low, int high) {
+        if (node == null) return;
+        if (node.data > low) rangeSearch(node.left, low, high);
+        if (node.data >= low && node.data <= high) {
+            System.out.println(node.item + " (deadline: " + node.data + ")");
+        }
+        if (node.data < high) rangeSearch(node.right, low, high);
+    }
 }

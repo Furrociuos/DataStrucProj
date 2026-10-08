@@ -110,4 +110,10 @@ public class HouseholdArray {
                 total
         );
     }
+
+    public String[] getCategories() {
+
+        return expenseCategories;
+
+    }
 }

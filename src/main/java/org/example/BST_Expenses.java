@@ -8,4 +8,5 @@ public class BST_Expenses {
     public void insertExpense(int key, String expense) { root = BST_Methods.insert(root, key, expense); }
     public void deleteExpense(int key) { root = BST_Methods.delete(root, key); }
     public void displayExpenses() { BST_Methods.inOrder(root); }
+    public void searchRange(int low, int high) { BST_Methods.rangeSearch(root, low, high); }
 }
