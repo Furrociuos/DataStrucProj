@@ -30,11 +30,8 @@ public class BST_Methods {
     static Node insert(Node root, int key, String item) {
         // Insert the new node at an empty position
         if (root == null) { return new Node(key, item); }
-        // If key is already present, keep both entries under the same key (e.g. two chores due the same day, or two bills with the same amount)
-        if (key == root.data) {
-            root.item = root.item + ", " + item;
-            return root;
-        }
+        // If key is already present, do not insert it again
+        if (key == root.data) { return root; }
         // Insert into the left subtree
         if (key < root.data) { root.left = insert(root.left, key, item); }
         // Insert into the right subtree
@@ -83,7 +80,7 @@ public class BST_Methods {
         if (node == null) return;
         if (node.data > low) rangeSearch(node.left, low, high);
         if (node.data >= low && node.data <= high) {
-            System.out.println(node.item + " (key: " + node.data + ")");
+            System.out.println(node.item + " (deadline: " + node.data + ")");
         }
         if (node.data < high) rangeSearch(node.right, low, high);
     }
