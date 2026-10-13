@@ -54,7 +54,7 @@ public class TaskQueue {
         int position = 1;
         while (current != null) {
             System.out.println(position + ". " + current.data.getTitle()
-                    + " (deadline: " + current.data.getDeadline() + ")");
+                    + " (due: " + current.data.getDueDate() + ")");
             current = current.next;
             position++;
         }

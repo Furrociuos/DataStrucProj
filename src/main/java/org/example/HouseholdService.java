@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 
@@ -28,7 +29,11 @@ public class HouseholdService {
 
     // ---- 2. Add chore ----
     public void addChore(String id, String title, int deadline, String memberID) {
-        Task task = new Task(id, title, deadline);
+        addChore(id, title, LocalDate.ofEpochDay(deadline), memberID);
+    }
+
+    public void addChore(String id, String title, LocalDate dueDate, String memberID) {
+        Task task = new Task(id, title, dueDate);
         if (!tables.addTask(task)) {
             System.out.println("Could not add chore (duplicate or invalid ID).");
             return;
@@ -37,7 +42,7 @@ public class HouseholdService {
             tables.assignTask(id, memberID);
         }
         choreHeap.insert(task);
-        choreBST.insertChore(deadline, title);
+        choreBST.insertChore(task.getDeadline(), title);
         choreGraph.addChore(title);
         pendingChores.enqueue(task);
         System.out.println("Added chore: " + title);
@@ -74,11 +79,16 @@ public class HouseholdService {
             System.out.println("No chores pending.");
         } else {
             System.out.println("Next priority chore: " + next.getTitle()
-                    + " (deadline: " + next.getDeadline() + ")");
+                    + " (due: " + next.getDueDate() + ")");
         }
     }
 
     // ---- 6. Search chores by deadline range ----
+    public void searchChoresByDeadlineRange(LocalDate from, LocalDate to) {
+        System.out.println("Chores due between " + from + " and " + to + ":");
+        choreBST.searchRange((int) from.toEpochDay(), (int) to.toEpochDay());
+    }
+
     public void searchChoresByDeadlineRange(int low, int high) {
         System.out.println("Chores due between " + low + " and " + high + ":");
         choreBST.searchRange(low, high);
@@ -140,7 +150,7 @@ public class HouseholdService {
         }
         for (int i = 0; i < tasks.size(); i++) {
             Task t = tasks.get(i);
-            System.out.println("- " + t.getTitle() + " (deadline: " + t.getDeadline() + ")");
+            System.out.println("- " + t.getTitle() + " (due: " + t.getDueDate() + ")");
         }
     }
 

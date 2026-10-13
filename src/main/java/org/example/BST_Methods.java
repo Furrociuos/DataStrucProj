@@ -77,11 +77,15 @@ public class BST_Methods {
     }
 
     static void rangeSearch(Node node, int low, int high) {
+        rangeSearch(node, low, high, key -> "deadline: " + key);
+    }
+
+    static void rangeSearch(Node node, int low, int high, java.util.function.IntFunction<String> label) {
         if (node == null) return;
-        if (node.data > low) rangeSearch(node.left, low, high);
+        if (node.data > low) rangeSearch(node.left, low, high, label);
         if (node.data >= low && node.data <= high) {
-            System.out.println(node.item + " (deadline: " + node.data + ")");
+            System.out.println(node.item + " (" + label.apply(node.data) + ")");
         }
-        if (node.data < high) rangeSearch(node.right, low, high);
+        if (node.data < high) rangeSearch(node.right, low, high, label);
     }
 }

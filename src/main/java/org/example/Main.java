@@ -1,4 +1,6 @@
 package org.example;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -48,11 +50,17 @@ public class Main {
                    String id = in.nextLine();
                    System.out.print("Title: ");
                    String title = in.nextLine();
-                   System.out.print("Deadline (lower = more urgent): ");
-                   int deadline = Integer.parseInt(in.nextLine());
+                   System.out.print("Due date (yyyy-MM-dd, earlier = more urgent): ");
+                   LocalDate dueDate;
+                   try {
+                       dueDate = LocalDate.parse(in.nextLine().trim());
+                   } catch (DateTimeParseException e) {
+                       errMsg = "Invalid date. Use yyyy-MM-dd (e.g. 2026-10-20).\n";
+                       break;
+                   }
                    System.out.print("Assign to member ID (blank for none): ");
                    String memberID = in.nextLine();
-                   service.addChore(id, title, deadline, memberID);
+                   service.addChore(id, title, dueDate, memberID);
                    pause(in);
                    break;
                }
@@ -78,11 +86,17 @@ public class Main {
                    break;
                }
                case "6": {
-                   System.out.print("Low deadline: ");
-                   int low = Integer.parseInt(in.nextLine());
-                   System.out.print("High deadline: ");
-                   int high = Integer.parseInt(in.nextLine());
-                   service.searchChoresByDeadlineRange(low, high);
+                   LocalDate from, to;
+                   try {
+                       System.out.print("From date (yyyy-MM-dd): ");
+                       from = LocalDate.parse(in.nextLine().trim());
+                       System.out.print("To date (yyyy-MM-dd): ");
+                       to = LocalDate.parse(in.nextLine().trim());
+                   } catch (DateTimeParseException e) {
+                       errMsg = "Invalid date. Use yyyy-MM-dd (e.g. 2026-10-20).\n";
+                       break;
+                   }
+                   service.searchChoresByDeadlineRange(from, to);
                    pause(in);
                    break;
                }
